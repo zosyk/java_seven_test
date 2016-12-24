@@ -1,0 +1,82 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: url("../img/bg.png");
+}
+
+.main {
+    width: 1000px;
+    margin: auto;
+    padding: 18px 0 18px 0;
+}
+
+.header {
+    text-align: center;
+}
+
+.btn_style {
+    text-align: right;
+    margin: 20px;
+}
+
+.icons {
+    float: left;
+}
+
+.feature {
+    margin-top: 28px;
+}
+
+.icon {
+
+    float: left;
+    width: 54px;
+    height: 54px;
+    position: relative;
+    background: url("../img/services.png");
+}
+
+.statements {
+    background-position: 0 0;
+}
+
+.mobile {
+    background-position: -54px 0;
+}
+
+.utilities {
+    background-position: -108px 0;
+}
+
+.translation {
+    background-position: -162px 0;
+}
+
+.deposits {
+    background-position: -218px 0;
+}
+
+.title{
+    font-weight: bold;
+}
+
+.header {
+    text-align: center;
+}
+
+.action-container {
+    width: 300px;
+    float: right;
+}
+
+.action-form {
+    padding: 10px;
+    margin-top: 18px;
+    position: relative;
+    background-color: #F5F5F5;
+    border: 1px solid #b8b8b8;
+}
+
+.form-item-margin-top{
+    margin-top: 15px;
+}

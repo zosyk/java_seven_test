@@ -1,0 +1,6 @@
+net/java/seven/test/controllers/LoginController.class
+net/java/seven/test/config/SpringSecurityInitializer.class
+net/java/seven/test/config/DatabaseConfig.class
+net/java/seven/test/config/WebConfig.class
+net/java/seven/test/config/Initializer.class
+net/java/seven/test/config/SecurityConfig.class
