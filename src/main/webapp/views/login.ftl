@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>West bank</title>
+    <title>Bank</title>
 
     <link href="../css/bootstrap.css" rel="stylesheet"/>
     <link href="../css/custom_input.css" rel="stylesheet">
@@ -17,6 +17,7 @@
     <script type="text/javascript" src="../js/custom/index.js"></script>
 
     <link href="../css/login.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
 
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -26,27 +27,29 @@
 
 <div class="main">
     <div class="header">
-        <h1>West Bank</h1>
+        <h1>Bank</h1>
     </div>
     <div class="btn_style">
-        <@spring.message "language.text"/> : <a href="?lang=en"><img src="../img/ic_en.jpg" width="30" height="20"></a>
+    <@spring.message "language.text"/> :
+        <a href="?lang=en"><img src="../img/ic_en.jpg" width="30" height="20"></a>
+        <a href="?lang=uk"><img src="../img/ic_uk.png" width="30" height="20"></a>
         <a href="?lang=ru"><img src="../img/ic_ru.png" width="30" height="20"></a>
     </div>
     <div class="icons">
         <div class="feature">
             <div class="icon    statements"></div>
             <div class="title"><@spring.message "statements.of.card"/></div>
-            <div><@spring.message "controll.cash.flow"/> </div>
+            <div><@spring.message "controll.cash.flow"/></div>
         </div>
         <div class="feature">
             <div class="icon mobile"></div>
-            <div class="title"><@spring.message "recharge.mobile"/> </div>
-            <div><@spring.message "mobile.operations"/> </div>
+            <div class="title"><@spring.message "recharge.mobile"/></div>
+            <div><@spring.message "mobile.operations"/></div>
         </div>
         <div class="feature">
             <div class="icon utilities"></div>
-            <div class="title"><@spring.message "regular.utilities"/> </div>
-            <div><@spring.message "automatic.payment"/> </div>
+            <div class="title"><@spring.message "regular.utilities"/></div>
+            <div><@spring.message "automatic.payment"/></div>
         </div>
         <div class="feature">
             <div class="icon translation"></div>
@@ -55,8 +58,8 @@
         </div>
         <div class="feature">
             <div class="icon deposits"></div>
-            <div class="title"><@spring.message "deposits.text"/> </div>
-            <div><@spring.message "remotely.open.with"/> </div>
+            <div class="title"><@spring.message "deposits.text"/></div>
+            <div><@spring.message "remotely.open.with"/></div>
         </div>
     </div>
 
@@ -66,16 +69,15 @@
 
             <form action="/j_spring_security_check" method="post">
 
-                <#if error??>
-                    <!-- Display error message -->
-                    <div class="error">
-                        <#--<@spring.message "error.login.attempt.not.successful"/>-->
-                            ${error}
-                        <br/>
-                    </div>
-                </#if>
+            <#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
+                <!-- Display error message -->
+                <div class="error">
+                    <@spring.message "error.login.attempt.not.successful"/>
+                    <br/>
+                </div>
+            </#if>
 
-                <h2 class="form-signin-heading"><@spring.message "please.sign.in"/> </h2>
+                <h2 class="form-signin-heading"><@spring.message "please.sign.in"/></h2>
 
                 <div class="field">
 
@@ -95,12 +97,8 @@
 
                 </div>
 
-                <button class="btn  btn-lg btn-primary btn-block form-item-margin-top" type="submit"><@spring.message "signin.button"/> </button>
-            </form>
-            <form action="/registration/" method="get">
-                <button class="btn btn-lg btn-primary btn-block form-item-margin-top" type="submit" id="btn_reg">
-                    Registration
-                </button>
+                <button class="btn  btn-lg btn-primary btn-block form-item-margin-top"
+                        type="submit"><@spring.message "signin.button"/></button>
             </form>
 
         </div>

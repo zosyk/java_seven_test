@@ -1,6 +1,3 @@
-/**
- * Created by alex on 12/6/16.
- */
 
 jQuery(function ($) {
     $(".field-input").focus(function () {
@@ -17,4 +14,6 @@ jQuery(function ($) {
 
         $parent.removeClass("is-focused");
     })
+
+
 })
