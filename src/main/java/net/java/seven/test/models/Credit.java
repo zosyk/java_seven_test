@@ -63,4 +63,15 @@ public class Credit {
     public void setCondition(String condition) {
         this.condition = condition;
     }
+
+    @Override
+    public String toString() {
+        return "Credit{" +
+                "id=" + id +
+                ", clientId=" + clientId +
+                ", openDate=" + openDate +
+                ", closeDate=" + closeDate +
+                ", condition='" + condition + '\'' +
+                '}';
+    }
 }

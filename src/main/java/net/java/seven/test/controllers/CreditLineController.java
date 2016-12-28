@@ -5,6 +5,8 @@ import net.java.seven.test.db_service.CreditService;
 import net.java.seven.test.models.Credit;
 import net.java.seven.test.models.Payment;
 import net.java.seven.test.utils.ModelFields;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +27,13 @@ public class CreditLineController {
     @Autowired
     CreditService creditService;
 
+    private Logger logger = LoggerFactory.getLogger(CreditLineController.class);
+
     @RequestMapping(value = "/createCreditLine", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Credit> createClient(@RequestBody Credit credit) {
+    public ResponseEntity<Credit> createCredit(@RequestBody Credit credit) {
+
+        logger.debug("in createCredit, credit: " + credit.toString());
 
         credit.setOpenDate(System.currentTimeMillis());
         creditService.save(credit);
@@ -54,6 +60,8 @@ public class CreditLineController {
             e.printStackTrace();
         }
 
+        logger.debug("getAllClients, json: " + json);
+
         return json;
     }
 
@@ -62,6 +70,8 @@ public class CreditLineController {
 
         final long creditId = Long.valueOf(req.getParameter("id"));
         final int creditNumber = Integer.valueOf(req.getParameter("credit_number"));
+
+        logger.debug("in showCreditLines, creditID: " + creditId + " , creditNumber: " + creditNumber);
 
         final Credit credit = creditService.getByID(creditId);
         model.addAttribute(ModelFields.PAYMENTS, getPayments(credit));

@@ -5,6 +5,8 @@ import net.java.seven.test.db_service.ClientService;
 import net.java.seven.test.db_service.CreditService;
 import net.java.seven.test.models.Client;
 import net.java.seven.test.utils.ModelFields;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,8 @@ public class MainController {
 
     @Autowired
     CreditService creditService;
+
+    private Logger logger = LoggerFactory.getLogger(MainController.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getMainPage(final Map<String, Object> model) {
@@ -57,6 +61,8 @@ public class MainController {
             e.printStackTrace();
         }
 
+        logger.debug("in getAllClients, json: " + json);
+
         return json;
     }
 
@@ -76,6 +82,7 @@ public class MainController {
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
 
         clientService.save(client);
+        logger.debug("in createClient, client: " + client.toString());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -84,6 +91,9 @@ public class MainController {
     public String editProfile(HttpServletRequest req, final Model model) {
 
         final long clientId = Long.valueOf(req.getParameter("id"));
+
+        logger.debug("in editProfile, clientID: " + clientId);
+
         final Client client = clientService.getByID(clientId);
         model.addAttribute(ModelFields.CLIENT, client);
 
@@ -94,6 +104,8 @@ public class MainController {
     public String showCreditLines(HttpServletRequest req, final Model model) {
 
         final long clientId = Long.valueOf(req.getParameter("id"));
+
+        logger.debug("in showCreditLines, clientID: " + clientId);
 
         final Client client = clientService.getByID(clientId);
         model.addAttribute(ModelFields.CLIENT, client);
@@ -111,6 +123,9 @@ public class MainController {
         client.setSurname(req.getParameter("surname"));
         client.setAddress(req.getParameter("address"));
         client.setPhone(req.getParameter("phone"));
+
+        logger.debug("in updateClient, client: " + client.toString());
+
 
         clientService.save(client);
 

@@ -1,9 +1,7 @@
 package net.java.seven.test.db_service;
 
 
-import net.java.seven.test.db_service.repository.CreditRepository;
 import net.java.seven.test.db_service.repository.PaymentRepository;
-import net.java.seven.test.models.Credit;
 import net.java.seven.test.models.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
